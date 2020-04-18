@@ -1,5 +1,6 @@
 package cn.yangjian.im.client.scanner;
 
+import cn.yangjian.im.client.service.EchoService;
 import cn.yangjian.im.client.service.MsgHandle;
 import cn.yangjian.im.client.service.MsgLogger;
 import cn.yangjian.im.client.util.SpringBeanFactory;
@@ -12,9 +13,12 @@ public class Scan implements Runnable {
 
     private final MsgLogger msgLogger;
 
+    private EchoService echoService;
+
     public Scan() {
         this.msgHandle = SpringBeanFactory.getBean(MsgHandle.class);
         this.msgLogger = SpringBeanFactory.getBean(MsgLogger.class);
+        this.echoService = SpringBeanFactory.getBean(EchoService.class);
     }
 
     @Override
@@ -39,6 +43,7 @@ public class Scan implements Runnable {
             //写入聊天记录
             msgLogger.log(msg);
 
+            echoService.echo(msg);
         }
     }
 }

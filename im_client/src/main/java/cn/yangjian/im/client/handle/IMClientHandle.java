@@ -54,6 +54,7 @@ public class IMClientHandle extends SimpleChannelInboundHandler<IMResponseProto.
             //回调消息
             callBackMsg(imResProtocol.getResMsg());
 
+            echoService.echo(imResProtocol.getResMsg());
         }
     }
 
