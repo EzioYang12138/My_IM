@@ -14,9 +14,6 @@ public class AppConfiguration {
     @Value("${app.zk.addr}")
     private String zkAddr;
 
-    @Value("${app.zk.switch}")
-    private boolean zkSwitch;
-
     @Value("${im.server.port}")
     private int imServerPort;
 
